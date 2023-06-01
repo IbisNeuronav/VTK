@@ -101,16 +101,6 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "PGI")
   set(VTK_REQUIRED_CXX_FLAGS "${VTK_REQUIRED_CXX_FLAGS} --diag_suppress=381")
 endif()
 
-if(MSVC)
-# Use the highest warning level for visual c++ compiler.
-  set(CMAKE_CXX_WARNING_LEVEL 4)
-  if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
-    STRING(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-  else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
-  endif()
-endif()
-
 # Disable deprecation warnings for standard C and STL functions in VS2015+
 # and later
 if(MSVC)
