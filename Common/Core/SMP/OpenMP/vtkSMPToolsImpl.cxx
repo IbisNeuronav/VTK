@@ -72,6 +72,13 @@ bool vtkSMPToolsImpl<BackendType::OpenMP>::GetSingleThread()
 }
 
 //------------------------------------------------------------------------------
+template <>
+bool vtkSMPToolsImpl<BackendType::OpenMP>::IsParallelScope()
+{
+  return this->IsParallel;
+}
+
+//------------------------------------------------------------------------------
 void vtkSMPToolsImplForOpenMP(vtkIdType first, vtkIdType last, vtkIdType grain,
   ExecuteFunctorPtrType functorExecuter, void* functor, bool nestedActivated)
 {

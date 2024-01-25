@@ -139,6 +139,10 @@ int vtkSMPToolsImpl<BackendType::OpenMP>::GetEstimatedNumberOfThreads();
 template <>
 bool vtkSMPToolsImpl<BackendType::OpenMP>::GetSingleThread();
 
+//--------------------------------------------------------------------------------
+template <>
+bool vtkSMPToolsImpl<BackendType::OpenMP>::IsParallelScope();
+
 VTK_ABI_NAMESPACE_END
 } // namespace smp
 } // namespace detail

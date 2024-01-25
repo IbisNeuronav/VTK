@@ -84,6 +84,13 @@ bool vtkSMPToolsImpl<BackendType::TBB>::GetSingleThread()
 }
 
 //------------------------------------------------------------------------------
+template <>
+bool vtkSMPToolsImpl<BackendType::TBB>::IsParallelScope()
+{
+  return this->IsParallel;
+}
+
+//------------------------------------------------------------------------------
 void vtkSMPToolsImplForTBB(vtkIdType first, vtkIdType last, vtkIdType grain,
   ExecuteFunctorPtrType functorExecuter, void* functor)
 {

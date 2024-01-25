@@ -32,6 +32,13 @@ bool vtkSMPToolsImpl<BackendType::Sequential>::GetSingleThread()
   return true;
 }
 
+//------------------------------------------------------------------------------
+template <>
+bool vtkSMPToolsImpl<BackendType::Sequential>::IsParallelScope()
+{
+  return this->IsParallel; // hard-code false instead?
+}
+
 VTK_ABI_NAMESPACE_END
 } // namespace smp
 } // namespace detail

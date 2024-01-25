@@ -105,6 +105,10 @@ int vtkSMPToolsImpl<BackendType::Sequential>::GetEstimatedNumberOfThreads();
 template <>
 bool vtkSMPToolsImpl<BackendType::Sequential>::GetSingleThread();
 
+//--------------------------------------------------------------------------------
+template <>
+bool vtkSMPToolsImpl<BackendType::Sequential>::IsParallelScope();
+
 VTK_ABI_NAMESPACE_END
 } // namespace smp
 } // namespace detail

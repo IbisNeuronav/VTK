@@ -59,7 +59,7 @@ public:
   bool GetNestedParallelism() { return this->NestedActivated; }
 
   //--------------------------------------------------------------------------------
-  bool IsParallelScope() { return this->IsParallel; }
+  bool IsParallelScope();
 
   //--------------------------------------------------------------------------------
   bool GetSingleThread();
