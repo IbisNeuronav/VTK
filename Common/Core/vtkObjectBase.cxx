@@ -86,37 +86,6 @@ void vtkCustomFree(void* addr)
 #endif
 }
 
-#if defined(_WIN32) || defined(VTK_USE_MEMKIND)
-//------------------------------------------------------------------------------
-// Take control of allocation to avoid dll boundary problems or to use memkind.
-void* vtkObjectBase::operator new(size_t nSize)
-{
-#ifdef VTK_USE_MEMKIND
-  return vtkObjectBase::GetCurrentMallocFunction()(nSize);
-#else
-  return malloc(nSize);
-#endif
-}
-
-//------------------------------------------------------------------------------
-void vtkObjectBase::operator delete(void* p)
-{
-#ifdef VTK_USE_MEMKIND
-  if (static_cast<vtkObjectBase*>(p)->GetIsInMemkind())
-  {
-    vtkCustomFree(p);
-  }
-  else
-  {
-    free(p);
-  }
-#else
-  free(p);
-#endif
-}
-// take control of ... above
-#endif
-
 // ------------------------------------vtkObjectBase----------------------
 // This operator allows all subclasses of vtkObjectBase to be printed via <<.
 // It in turn invokes the Print method, which in turn will invoke the

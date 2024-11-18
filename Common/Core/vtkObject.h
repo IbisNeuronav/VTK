@@ -50,12 +50,6 @@ public:
    */
   static vtkObject* New();
 
-#ifdef _WIN32
-  // avoid dll boundary problems
-  void* operator new(size_t tSize);
-  void operator delete(void* p);
-#endif
-
   /**
    * Turn debugging output on.
    */

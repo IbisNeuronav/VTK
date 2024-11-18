@@ -18,22 +18,6 @@ VTK_ABI_NAMESPACE_BEGIN
 static vtkTypeBool vtkObjectGlobalWarningDisplay = 1;
 
 //------------------------------------------------------------------------------
-// avoid dll boundary problems
-#ifdef _WIN32
-void* vtkObject::operator new(size_t nSize)
-{
-  void* p = malloc(nSize);
-  return p;
-}
-
-//------------------------------------------------------------------------------
-void vtkObject::operator delete(void* p)
-{
-  free(p);
-}
-#endif
-
-//------------------------------------------------------------------------------
 void vtkObject::SetGlobalWarningDisplay(vtkTypeBool val)
 {
   vtkObjectGlobalWarningDisplay = val;

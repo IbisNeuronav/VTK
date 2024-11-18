@@ -158,12 +158,6 @@ public:
   // vtkDebugLeaks registration.
   void InitializeObjectBase();
 
-#if defined(_WIN32) || defined(VTK_USE_MEMKIND)
-  // Take control of allocation to avoid dll boundary problems or to use memkind.
-  void* operator new(size_t tSize);
-  void operator delete(void* p);
-#endif
-
   /**
    * Print an object to an ostream. This is the method to call
    * when you wish to see print the internal state of an object.
